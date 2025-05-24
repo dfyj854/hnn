@@ -1,0 +1,346 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>海南热词云</title>
+<style>
+    body {
+        background: #0a0e17;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+    }
+    .text-b.tit02 {
+        font-size: 32px;
+        color: #fff;
+        padding: 20px 0;
+        font-weight: bold;
+        text-shadow: 0 0 15px rgba(100, 149, 237, 0.8);
+        position: relative;
+        z-index: 10;
+    }
+    .tagcloud {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        perspective: 1000px;
+    }
+    .tagcloud a {
+        position: absolute;
+        display: inline-block;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: transform 0.5s linear;
+        white-space: nowrap;
+        transform-origin: center center;
+        will-change: transform;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        z-index: 5;
+    }
+    .tagcloud a.active {
+        transform: scale(3) !important;
+        z-index: 100;
+        box-shadow: 0 0 30px rgba(100, 149, 237, 0.8);
+        transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.4, 1.5);
+    }
+    .b01 { font-size: 14px; }
+    .b02 { font-size: 18px; }
+    .b03 { font-size: 22px; }
+    .b04 { font-size: 26px; }
+    .co01 { background: linear-gradient(45deg, #6495ed, #4169e1); color: white; }
+    .co02 { background: linear-gradient(45deg, #9370db, #8a2be2); color: white; }
+    .co03 { background: linear-gradient(45deg, #87ceeb, #1e90ff); color: white; }
+    .co04 { background: linear-gradient(45deg, #e64f89, #e64f89); color: white; }
+    .co05 { background: linear-gradient(45deg, #ffd700, #daa520); color: #2d3436; }
+    #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    }
+</style>
+</head>
+<body>
+    <audio id="clickSound" src="video\mp3\Bubble01.mp3" preload="auto"></audio>
+    <div id="particles-js"></div>
+    <div class="text-b tit02" style="text-align: center;">海南农产品热词云</div>
+    <div class="tagcloud">
+      <a class="b04 co04" href="#">文昌鸡</a >
+      <a class="b02 co02" href="#">土豆</a >
+      <a class="b01 co04" href="#">龙虾</a >
+      <a class="b04 co02" href="#">槟榔</a >
+      <a class="b04 co04" href="#">烤乳猪</a >
+      <a class="b03 co04" href="#">芒果</a >
+      <a class="b02 co02" href="#">八爪鱼</a >
+      <a class="b03 co05" href="#">榴莲</a >
+      <a class="b04 co02" href="#">西 瓜</a >
+      <a class="b03 co05" href="#">荔 枝</a >
+      <a class="b03 co05" href="#">火龙果</a >
+      <a class="b04 co02" href="#">屯昌富锌柠檬</a >
+      <a class="b01 co05" href="#">‌屯昌黑猪</a >
+      <a class="b03 co05" href="#">万宁东山羊</a >
+      <a class="b04 co04" href="#">澄迈桥头地瓜</a >
+      <a class="b01 co05" href="#">兴隆咖啡</a >
+      <a class="b03 co05" href="#">春光椰子制品</a >
+      <a class="b03 co02" href="#">澄迈无核荔枝</a >
+      <a class="b04 co04" href="#">‌黄皮‌</a >
+      <a class="b03 co05" href="#">大坡胡椒</a >
+      <a class="b02 co02" href="#">贵妃芒</a >
+      <a class="b03 co05" href="#">台农芒</a >
+      <a class="b02 co04" href="#">金煌芒</a >
+    </div>
+
+<script src="bootstrap\js\particles.min.js"></script>
+<script>
+    // ===== 高性能粒子系统 =====
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 1000 } },
+            color: { value: "#FFFFFF" },
+            shape: { type: "circle" },
+            opacity: { 
+                value: 0.7, 
+                random: true,
+                anim: { enable: true, speed: 0.5, opacity_min: 0.3, sync: false }
+            },
+            size: { 
+                value: 2.5, 
+                random: true,
+                anim: { enable: true, speed: 1, size_min: 0.5, sync: false }
+            },
+            line_linked: {
+                enable: true,
+                distance: 200,
+                color: "#4A6FA5",
+                opacity: 0.3,
+                width: 0.8
+            },
+            move: {
+                enable: true,
+                speed: 0.3,
+                direction: "none",
+                random: true,
+                straight: false,
+                out_mode: "out",
+                bounce: false,
+                attract: { enable: true, rotateX: 1000, rotateY: 2000 }
+            }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+                grab: { distance: 150, line_linked: { opacity: 0.8 } },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+
+    // ===== 优化后的热词云系统 =====
+    const tags = document.querySelectorAll('.tagcloud a');
+    const clickSound = document.getElementById('clickSound');
+    let activeTag = null;
+    let tagPositions = [];
+    let animationFrameId;
+    
+    // 碰撞检测（使用空间分区优化）
+    const gridSize = 100;
+    const grid = {};
+    
+    function getGridKey(x, y) {
+        return `${Math.floor(x/gridSize)}_${Math.floor(y/gridSize)}`;
+    }
+    
+    function updateGrid(tag, x, y) {
+        const key = getGridKey(x, y);
+        if (!grid[key]) grid[key] = [];
+        grid[key].push(tag);
+    }
+    
+    function clearGrid() {
+        for (let key in grid) {
+            delete grid[key];
+        }
+    }
+    
+    function checkCollision(tag, x, y, width, height) {
+        const keys = [
+            getGridKey(x, y),
+            getGridKey(x + width, y),
+            getGridKey(x, y + height),
+            getGridKey(x + width, y + height)
+        ];
+        
+        for (let key of keys) {
+            if (grid[key]) {
+                for (let otherTag of grid[key]) {
+                    if (otherTag !== tag) {
+                        const rect = otherTag.getBoundingClientRect();
+                        if (!(x > rect.right || x + width < rect.left || 
+                              y > rect.bottom || y + height < rect.top)) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    // 初始化位置
+    function initializeTags() {
+        clearGrid();
+        const padding = 20;
+        
+        tags.forEach((tag, index) => {
+            let attempts = 0;
+            let x, y;
+            const rect = tag.getBoundingClientRect();
+            
+            do {
+                x = Math.random() * (window.innerWidth - rect.width);
+                y = Math.random() * (window.innerHeight - rect.height);
+                attempts++;
+                
+                if (attempts > 100) {
+                    // 如果尝试次数过多，放宽碰撞检测
+                    break;
+                }
+            } while (checkCollision(tag, x, y, rect.width, rect.height));
+            
+            updateGrid(tag, x, y);
+            tag.dataset.x = x;
+            tag.dataset.y = y;
+            tag.dataset.vx = (Math.random() - 0.5) * 0.3;
+            tag.dataset.vy = (Math.random() - 0.5) * 0.3;
+            
+            tag.style.left = `${x}px`;
+            tag.style.top = `${y}px`;
+            tag.style.opacity = '0';
+            
+            // 渐显效果
+            setTimeout(() => {
+                tag.style.transition = 'opacity 0.8s ease';
+                tag.style.opacity = '1';
+            }, index * 50);
+        });
+    }
+    
+    // 动画循环（使用requestAnimationFrame优化）
+    function animateTags() {
+        clearGrid();
+        const boundaryPadding = 50;
+        
+        tags.forEach(tag => {
+            if (tag.classList.contains('active')) {
+                updateGrid(tag, parseFloat(tag.style.left), parseFloat(tag.style.top));
+                return;
+            }
+            
+            let x = parseFloat(tag.dataset.x);
+            let y = parseFloat(tag.dataset.y);
+            let vx = parseFloat(tag.dataset.vx);
+            let vy = parseFloat(tag.dataset.vy);
+            const rect = tag.getBoundingClientRect();
+            
+            // 边界检测
+            if (x < boundaryPadding || x > window.innerWidth - rect.width - boundaryPadding) {
+                vx *= -1;
+            }
+            if (y < boundaryPadding || y > window.innerHeight - rect.height - boundaryPadding) {
+                vy *= -1;
+            }
+            
+            // 随机方向微调
+            if (Math.random() < 0.02) {
+                vx += (Math.random() - 0.5) * 0.1;
+                vy += (Math.random() - 0.5) * 0.1;
+            }
+            
+            // 限制速度
+            const maxSpeed = 0.5;
+            const speed = Math.sqrt(vx*vx + vy*vy);
+            if (speed > maxSpeed) {
+                vx = (vx / speed) * maxSpeed;
+                vy = (vy / speed) * maxSpeed;
+            }
+            
+            // 应用新位置
+            x += vx;
+            y += vy;
+            
+            // 简单碰撞避免
+            if (checkCollision(tag, x, y, rect.width, rect.height)) {
+                vx *= -0.8;
+                vy *= -0.8;
+                x += vx * 2;
+                y += vy * 2;
+            }
+            
+            tag.dataset.x = x;
+            tag.dataset.y = y;
+            tag.dataset.vx = vx;
+            tag.dataset.vy = vy;
+            
+            tag.style.left = `${x}px`;
+            tag.style.top = `${y}px`;
+            
+            updateGrid(tag, x, y);
+        });
+        
+        animationFrameId = requestAnimationFrame(animateTags);
+    }
+    
+    // 点击事件处理
+    tags.forEach(tag => {
+        tag.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            clickSound.currentTime = 0;
+            clickSound.play();
+            
+            if (this === activeTag) {
+                this.classList.remove('active');
+                activeTag = null;
+                return;
+            }
+            
+            if (activeTag) activeTag.classList.remove('active');
+            this.classList.add('active');
+            activeTag = this;
+            
+            setTimeout(() => {
+                if (this === activeTag) {
+                    this.classList.remove('active');
+                    activeTag = null;
+                }
+            }, 3000);
+        });
+    });
+    
+    // 启动系统
+    window.addEventListener('load', () => {
+        initializeTags();
+        setTimeout(() => {
+            animateTags();
+        }, 500);
+    });
+    
+    window.addEventListener('resize', () => {
+        cancelAnimationFrame(animationFrameId);
+        initializeTags();
+        animateTags();
+    });
+</script>
+</body>
+</html>

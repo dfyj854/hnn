@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>溯源</title>
+    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+	<link href="assets/css/main.css" rel="stylesheet"/>
+	    
+	<!-- Animation CSS -->
+	<link href="assets/css/vendor/aos.css" rel="stylesheet"/>
+
+       <style>
+              #modalBackdrop {
+                  display: none;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0,0,0,0.7);
+                  z-index: 1000;
+              }
+              .modal-container {
+                  display: none;
+                  position: fixed;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%,-50%);
+                  background: rgba(0,0,0,0.9);
+                  padding: 2rem;
+                  border-radius: 8px;
+                  z-index: 2000;
+                  width: 90%;
+                  max-width: 800px;
+              }
+              video {
+                  width: 100%;
+                  height: auto;
+                  border-radius: 4px;
+              }
+          </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  	<a class="navbar-brand font-weight-bolder mr-3" href="index.html"><img src="assets/img/logo.png"></a>
+  	<button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault"
+  	 aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+  		<span class="navbar-toggler-icon"></span>
+  	</button>
+  	<div class="collapse navbar-collapse" id="navbarsDefault">
+  		<ul class="navbar-nav mr-auto align-items-center">
+  		
+  		</ul>
+  		
+  	</div>
+  </nav>
+  <main role="main">
+  
+  
+  	<section class="mt-4 mb-5">
+    <main role="main">
+        
+    
+    <section class=" pt-5 pb-5">
+    <div class="container">
+    	<div class="row justify-content-center">
+    		<div class="col-md-7">
+    		    <article class="card">
+    		        <img class="card-img-top mb-2" src="img/西红柿.jpeg" alt="海南西红柿">
+    		        <div class="card-body">
+    		            <h4 class="card-title display-4">海南西红柿</h4>
+    		            <h6>果型圆润如红宝石，单果约15g，果皮薄且汁水充沛，甜度高达8.5%以上，酸甜比例接近。</h6>
+    		            
+    		            <!-- 播放按钮 -->
+    		            <a href="#" 
+    		               class="btn btn-info btn-round" 
+    		               onclick="openVideoModal()">
+    		               点击播放
+    		            </a>
+    		
+    		            <!-- 视频模态框 -->
+    		            <div id="modal1" class="custom-modal">
+    		                <div class="modal-close" onclick="closeVideoModal()">&times;</div>
+    		                <h3>海南千禧</h3>
+    		                <div class="video-container">
+    		                    <video id="mainVideo" controls autoplay muted playsinline>
+    		                        <source src="vo/海南千禧.mp4" type="vo/mp4">
+    		                        <source src="vo/海南千禧.webm" type="vo/webm">
+    		                        您的浏览器不支持视频播放
+    		                    </video>
+    		                </div>
+    		            </div>
+    		
+    		            <!-- 背景遮罩 -->
+    		            <div id="modalBackdrop" class="modal-backdrop" onclick="closeVideoModal()"></div>
+    		        </div>
+    		    </article>
+    		</div>
+    		
+    		<style>
+    		/* 新增样式 */
+    		.custom-modal {
+    		    display: none;
+    		    position: fixed;
+    		    top: 50%;
+    		    left: 50%;
+    		    transform: translate(-50%,-50%);
+    		    background: rgba(0,0,0,0.9);
+    		    padding: 2rem;
+    		    border-radius: 8px;
+    		    z-index: 2000;
+    		    width: 90%;
+    		    max-width: 600px;
+    		    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+    		}
+    		
+    		.modal-close {
+    		    position: absolute;
+    		    right: 1.5rem;
+    		    top: 1rem;
+    		    cursor: pointer;
+    		    color: #fff;
+    		    font-size: 2rem;
+    		    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    		}
+    		
+    		.video-container video {
+    		    width: 100%;
+    		    height: auto;
+    		    border-radius: 4px;
+    		}
+    		
+    		.modal-backdrop {
+    		    display: none;
+    		    position: fixed;
+    		    top: 0;
+    		    left: 0;
+    		    width: 100%;
+    		    height: 100%;
+    		    background: rgba(0,0,0,0.7);
+    		    z-index: 1500;
+    		    backdrop-filter: blur(3px);
+    		}
+    		</style>
+    		
+    		<script>
+    		// 新增控制函数
+    		function openVideoModal() {
+    		    const modal = document.getElementById('modal1');
+    		    const backdrop = document.getElementById('modalBackdrop');
+    		    const video = document.getElementById('mainVideo');
+    		    
+    		    modal.style.display = 'block';
+    		    backdrop.style.display = 'block';
+    		    video.play().catch(error => {
+    		        console.log('视频自动播放被阻止:', error);
+    		        video.controls = true;
+    		    });
+    		}
+    		
+    		function closeVideoModal() {
+    		    const modal = document.getElementById('modal1');
+    		    const backdrop = document.getElementById('modalBackdrop');
+    		    const video = document.getElementById('mainVideo');
+    		    
+    		    video.pause();
+    		    modal.style.display = 'none';
+    		    backdrop.style.display = 'none';
+    		}
+    		</script>
+
+    	</div>
+    </div>
+    <div class="container-fluid mt-5">
+	
+	<div class="row">
+	  <div class="col-md-9">
+	    <h1>生产种植阶段管理</h1>
+	    <div class="row">
+	      <div class="col-xs-6 col-md-4">
+	        <h3 style="color: #008B8B;">种植环境监测</h3>
+			<h6>通过物联网传感器实时采集土壤温湿度、光照强度、pH值等数据，结合气象站记录降雨量及气温变化，确保番茄生长环境符合绿色食品标准。
+			</h6>
+			<img src="imgs/环境监测示意图.jpg" alt="环境监测示意图" class="img-responsive" style="margin-top:10px;">
+	      </div>
+	      <div class="col-xs-6 col-md-4">
+			<h3 style="color: #008B8B;">农事操作记录</h3>
+			<h6>详细记录播种时间、施肥种类（如有机肥/化肥配比）、灌溉周期及病虫害防治措施（包括生物农药使用量），所有数据同步至云端区块链存证。
+	        </h6>
+			<img src="imgs/农事操作记录.jpg" alt="农事操作记录图" class="img-responsive" style="margin-top:10px;">
+	      </div>
+		  <div class="col-xs-6 col-md-4">
+			<h3 style="color: #008B8B;">采收批次编码</h3>
+			<h6>对每批次番茄进行唯一ID赋码，关联采收时间、地块编号、农残检测报告（需包含克百威等58项指标数据），实现源头信息数字化。
+	       </h6>
+		   <img src="imgs/采收批次编码.jpg" alt="采收批次编码图" class="img-responsive" style="margin-top:10px;">
+		  </div>
+	    </div>
+	  </div>
+	</div>
+	</div>
+	<div class="container-fluid mt-5">
+	<div class="row">
+	  <div class="col-md-9">
+	    <h1>加工质检环节规范</h1>
+	    <div class="row">
+	      <div class="col-xs-6 col-md-6">
+	        <h3 style="color: #008B8B;">种植环境监测</h3>
+			<h6>通过物联网传感器实时采集土壤温湿度、光照强度、pH值等数据，结合气象站记录降雨量及气温变化，确保番茄生长环境符合绿色食品标准。
+			</h6>
+			<h3 style="color: #008B8B;">采收批次编码</h3>
+						<h6>对每批次番茄进行唯一ID赋码，关联采收时间、地块编号、农残检测报告（需包含克百威等58项指标数据），实现源头信息数字化。
+			</h6>
+			<h3 style="color: #008B8B;">采收批次编码</h3>
+					  			<h6>对每批次番茄进行唯一ID赋码，关联采收时间、地块编号、农残检测报告（需包含克百威等58项指标数据），实现源头信息数字化。
+			</h6>
+			</div>
+		   <div class="col-xs-6 col-md-6">
+		   			<img src="imgs/加工.jpg" alt="农事操作记录图" class="img-responsive" style="margin-top:10px;">
+		   </div>
+	    </div>
+	  </div>
+	</div>  
+	</div>
+	
+	<div class="container-fluid mt-5">
+	<div class="row">
+	  <div class="col-md-9">
+	    <h1>运输销售阶段追踪</h1>
+	    <div class="row">
+	      <div class="col-xs-6 col-md-4">
+	        <h3 style="color: #008B8B;">冷链物流监控</h3>
+			<h6>车载GPS+温湿度记录仪实时上传运输轨迹及车厢温度（冷藏车0-4℃），异常温度波动超过30分钟自动触发预警并冻结该批次追溯码。
+</h6>
+			<img src="imgs/冷链物流监控.jpg" alt="冷链物流监控图" class="img-responsive" style="margin-top:10px;">
+	      </div>
+	      <div class="col-xs-6 col-md-4">
+			  <img src="imgs/渠道分销验证.jpg" alt="渠道分销验证图" class="img-responsive" style="margin-top:10px;">
+			  
+			<h3 style="color: #008B8B;">渠道分销验证</h3>
+			<h6>经销商扫码入库时系统自动校验物流单号与电子签收单，防止窜货行为；零售终端扫码设备需通过MAC地址认证才能激活追溯信息展示。
+           </h6>
+			</div>
+		  <div class="col-xs-6 col-md-4">
+			<h3 style="color: #008B8B;">消费者互动设计</h3>
+			<h6>扫码页面除展示全程溯源信息外，集成农场VR漫游、营养师推荐菜谱等增值内容，扫码满3次可解锁有机种植纪录片观看权限。
+	       </h6>
+		   <img src="imgs/消费者互动设计.jpg" alt="消费者互动设计图" class="img-responsive" style="margin-top:10px;">
+		  </div>
+	    </div>
+	  </div>
+	</div>
+	</div>
+	
+
+
+<div class="container-fluid mt-5">
+	<div class="row">
+	  <div class="col-md-9">
+	    <h1>基础产品信息展示</h1>
+	    <div class="row">
+	      <div class="col-xs-6 col-md-6">
+	        <h3 style="color: #008B8B;">产品身份标识</h3>
+			<h6>通过唯一加密二维码展示番茄的批次号、生产日期、保质期等核心信息，确保每份产品可精准识别。系统自动关联数据库调取品种名称（如"普罗旺斯番茄"）、规格（500g/盒）等标准化数据。
+			</h6>
+			<h3 style="color: #008B8B;">生产主体档案</h3>
+			<h6>详细披露种植基地名称、地理位置（精确到经纬度）、企业资质证书编号及联系方式，消费者可一键查询农业产业化龙头企业等认证背书。
+			</h6>
+			<h3 style="color: #008B8B;">可视化档案</h3>
+			<h6>支持上传番茄生长周期的高清图片或短视频，展示育苗、定植、采收等关键环节的真实场景，增强信息可信度。
+			</h6>
+			</div>
+		   <div class="col-xs-6 col-md-6">
+		   			<img src="imgs/基础产品信息展示.jpg" alt="基础产品信息展示图" class="img-responsive" style="margin-top:10px;">
+		   </div>
+	    </div>
+	  </div>
+	</div>  
+	</div>
+	<div class="container-fluid mt-5">
+		<div class="row">
+		  <div class="col-md-9">
+		    <h1>质量检测数据披露</h1>
+		    <div class="row">
+				<div class="col-xs-6 col-md-2">
+				<img src="imgs/16.jpg" alt="农残检测报告图" class="img-responsive" style="margin-top:10px;">
+				</div>
+		      <div class="col-xs-6 col-md-10">
+		        <h3 style="color: #008B8B;">农残检测报告</h3>
+				<h6>完整呈现第三方检测机构出具的194项农药残留检测结果，采用红绿颜色标注超标/合格指标，同步显示检测标准（如GB 2763-2021）及检测方法（液相色谱-质谱联用法）。
+</h6>
+				</div>
+                
+		      <div class="col-xs-6 col-md-10">
+		        <h3 style="color: #008B8B;">营养成分析</h3>
+				<h6>动态展示番茄的维生素C（≥14mg/100g）、番茄红素（≥3mg/100g）等核心营养素含量，附带营养师解读建议，帮助消费者了解产品价值。
+                 </h6>
+				</div>
+				<div class="col-xs-6 col-md-2">
+				<img src="imgs/14.jpg" alt="营养成分析图" class="img-responsive" style="margin-top:10px;">
+				</div>
+				<div class="col-xs-6 col-md-2">
+				<img src="imgs/营养成分析.jpg" alt="营养成分析" class="img-responsive" style="margin-top:10px;">
+				</div>
+				<div class="col-xs-6 col-md-10">
+				  <h3 style="color: #008B8B;">产品身份标识</h3>
+				  <h6>完整呈现第三方检测机构出具的194项农药残留检测结果，采用红绿颜色标注超标/合格指标，同步显示检测标准（如GB 2763-2021）及检测方法（液相色谱-质谱联用法）。
+				  </h6></div>
+
+		    </div>
+		  </div>
+		</div>  
+		</div>
+		
+		<div class="container-fluid mt-5">
+				<div class="row">
+				  <div class="col-md-9">
+				    <h1>食安信任体系构建</h1>
+				    <div class="row">
+				      <div class="col-xs-6 col-md-6">
+				        <h3 style="color: #008B8B;">区块链防伪存证</h3>
+						<h6>采用Hyperledger Fabric框架，将检测报告、检疫证明等关键信息加密上链。某品牌番茄实现每包独立哈希值，造假成本提升300倍以上。
+		                 </h6>
+						 <h3 style="color: #008B8B;">区块链防伪存证</h3>
+						 <h6>开放政府监管端口和第三方检测数据接入，形成"企业自检+第三方抽检+政府监督"三重保障。南京市场局通过系统将监管响应速度缩短至2小时。
+						  </h6>
+						  <h3 style="color: #008B8B;">信用评价体系</h3>
+						  <h6>基于历史溯源数据生成供应商信用评分，优质生产者可获得流量倾斜。苏果超市据此将优质番茄供应商采购占比提升至75%。
+						   </h6>
+						</div>
+						<div class="col-xs-6 col-md-6">
+						<img src="imgs/18.jpg" alt="食安信任体系构建" class="img-responsive" style="margin-top:10px;">
+						</div>
+				    </div>
+				  </div>
+				</div>  
+				</div>
+    </section>
+	
+
+	
+	
+	
+    </main>
+
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/theme.js"></script>
+    
+    <footer class="footer pt-5 pb-5 text-center">
+        
+    <div class="container">
+        
+          <div class="socials-media">
+    
+            <ul class="list-unstyled">
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-facebook"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-twitter"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-instagram"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-google-plus"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-behance"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-dribbble"></i></a></li>
+            </ul>
+    
+          </div>
+        
+            <!--
+              All the links in the footer should remain intact.
+              You may remove the links only if you donate:
+              https://www.wowthemes.net/freebies-license/
+            -->
+          <p>©  <span class="credits font-weight-bold">        
+            <a target="_blank" class="text-dark" href="#/"><u>Pintereso Bootstrap HTML Template</u> by WowThemes.net.</a>
+          </span>
+          </p>
+    
+    
+        </div>
+        
+    </footer>   
+	 <script>
+        function openModal() {
+            document.getElementById('modalBackdrop').style.display = 'block';
+            document.getElementById('videoModal').style.display = 'block';
+            document.getElementById('tomatoVideo').play();
+        }
+        function closeModal() {
+            document.getElementById('tomatoVideo').pause();
+            document.getElementById('modalBackdrop').style.display = 'none';
+            document.getElementById('videoModal').style.display = 'none';
+        }
+    </script>
+</body>
+    
+</html>
